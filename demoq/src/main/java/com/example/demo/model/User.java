@@ -9,8 +9,8 @@ public class User {
    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "empid")
     private int id;
-    @Column(name = "fname")
-    private String fname;
+    @Column(name = "firstname")
+    private String firstname;
 
 
     @Column(name = "lname")
@@ -32,7 +32,7 @@ public class User {
     public User() { }
 
     public User(String fname, String lname,String username, String password, String roles) {
-        this.fname = fname;
+        this.firstname = fname;
         this.lname=lname;
         this.username = username;
         this.password = password;
@@ -53,11 +53,11 @@ public class User {
     }
 
     public String getfName() {
-        return fname;
+        return firstname;
     }
 
     public void setfName(String name) {
-        this.fname = name;
+        this.firstname = name;
     }
 
     public String getUsername() {
@@ -96,7 +96,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", fname='" + fname + '\'' +
+                ", fname='" + firstname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

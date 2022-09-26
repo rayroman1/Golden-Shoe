@@ -3,9 +3,14 @@
     bottom: 0px;
     left: 0;
     width: 100%;
+
     text-align: center;
+    height:160px;
+   /* top:-43px;*/
     background-color: indigo;
     color: white;
-    height:100px;
+    margin-top: -43px;
+    
+    
   }
   

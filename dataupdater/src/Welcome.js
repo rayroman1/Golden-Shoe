@@ -9,11 +9,13 @@ function ViewAll() {
         <h1>Select Item</h1>
 
         <table className="tabstyle1" >
+            <tr><Link to="/viewallitems">View items</Link></tr>
             <tr><Link to="/additem">Add item</Link></tr>
-            <tr><Link to="/">Delete Item</Link></tr>
-            <tr><Link to="/">Update Item</Link></tr>
-            <tr><Link to="/">Add Employee</Link></tr>
-            <tr><Link to="/">Update Employee</Link></tr>
+            <tr><Link to="/deleteitem">Delete Item</Link></tr>
+            <tr><Link to="/updateitem">Update Item</Link></tr>
+            <tr><Link to="/viewemployees">View employees</Link></tr>
+            <tr><Link to="/addemp">Add Employee</Link></tr>
+            <tr><Link to="/upemp">Update Employee</Link></tr>
 
         </table>
         </div>

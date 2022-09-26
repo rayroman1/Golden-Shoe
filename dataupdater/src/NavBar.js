@@ -7,18 +7,14 @@ class NavBar extends Component {
   render() {
     return (
       <div className="nAvSt">
-        <h1>Menu </h1><nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/signin">SignIn</Link>
-        </li>
-        <li>
-          <Link to="/viewall">ViewAll</Link>
-        </li>
-      </ul>
+        <h1 className="hstyle">Menu </h1><nav>
+     
+          <p className="pstyle"><Link to="/" className="navSt">Home</Link></p>
+      
+          <p className="pstyle" ><Link to="/signin" className="navSt">SignIn</Link></p>
+    
+         {/* <p className="pstyle" ><Link to="/viewall" className="navSt">ViewAll</Link></p> */}
+    
     </nav>
       </div>
     )

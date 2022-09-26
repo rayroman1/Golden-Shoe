@@ -1,26 +1,20 @@
 import logo from './images6.jpg';
 import React from 'react';
+import { BrowserRouter, Route, Link } from "react-router-dom";
 
 function Home() {
     return (
         <div>
         <header className="App-header">
-        <img src={logo} className="" alt="logo" />
+        {/*<img src={logo} className="" alt="logo" /> */}
         <p>
-          Welcome.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sign In to App
-        </a>
+          Welcome
+        </p><p className="pstyle" ><Link to="/signin" className="navSt">Signin</Link></p>
+      {/* <p className="pstyle" ><Link to="/viewall" className="navSt">ViewAll</Link></p>*/}
       </header>
      
     
-        <h1>this is the homepage</h1></div>
+        </div>
         
     );
 }

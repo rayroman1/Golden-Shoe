@@ -8,8 +8,14 @@ import Layout from "./Layout";
 import Home from "./Home";
 import Signin from "./Signin";
 import NotPage from "./NotPage";
-import ViewAll from "./ViewAll";
+import Welcome from "./Welcome";
 import AddItem from "./AddItem";
+import DeleteItem from "./DeleteItem";
+import UpdateItem from "./UpdateItem";
+import ViewItems from "./ViewItems";
+import ViewEmployees from "./ViewEmployees";
+import AddEmployee from "./AddEmployee";
+import UpdateEmployee from "./UpdateEmployee";
 
 function App() {
   
@@ -25,9 +31,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="signin" element={<Signin />} />
-          <Route path="viewall" element={<ViewAll />} />
+          <Route path="signin" element={<Signin message="546yery"/>} />
+          <Route path="viewall" element={<Welcome />} />
           <Route path="additem" element={<AddItem />} />
+          <Route path="deleteitem" element={<DeleteItem />} />
+          <Route path="addemp" element={<AddEmployee />} />
+          <Route path="upemp" element={<UpdateEmployee />} />
+          <Route path="viewallitems" element={<ViewItems />} />
+          <Route path="viewemployees" element={<ViewEmployees />} />
+          <Route path="updateitem" element={<UpdateItem />} />
+
+
           <Route path="*" element={<NotPage />} />
         </Route>
       </Routes>
