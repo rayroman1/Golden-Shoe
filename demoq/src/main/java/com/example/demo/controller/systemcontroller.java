@@ -7,8 +7,11 @@ import com.example.demo.service.Items1RepoImpl;
 import com.example.demo.service.Users1RepoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,6 +75,21 @@ public class systemcontroller {
         return a.getItemById (Integer.valueOf(k));
     }
 
+    @PutMapping("/itemsa/{id}")
+    public String updateItem(@PathVariable(value = "id") Integer ItemId,
+                                                @RequestBody Items itemDetails) throws ResourceNotFoundException { // @Valid
+        Items item1 = a.getItemById(ItemId)
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + ItemId));
 
+        item1.setProduct(itemDetails.getProduct());
+        item1.setPurchasedate(itemDetails.getPurchasedate());
+        item1.setExpdate(itemDetails.getExpdate());
+        item1.setQuantity(itemDetails.getQuantity());
+        item1.setPrice(itemDetails.getPrice());
+
+
+        final String updatedItem = a.addItem(item1);
+        return "Udpdated";//ResponseEntity.ok(updatedEmployee);
+    }
 
 }

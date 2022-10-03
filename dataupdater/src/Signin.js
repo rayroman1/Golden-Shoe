@@ -66,6 +66,7 @@ console.log('persons '+JSON.stringify(persons));
 console.log('Usern '+usern);
 console.log("Passw "+passw);
 let e=''; let a='';
+
 for (let value of Object.entries(persons))//{    if(usern===value.username && passw===value.password){  console.log("True");   navigate("./Welcome");;   }else{const mes='Un/password not found'; props.message=mes;} console.log('Hello '+value.lname);}
   {
     const y=value;

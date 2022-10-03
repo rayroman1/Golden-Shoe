@@ -6,36 +6,187 @@ import axios from 'axios';
 function UpdateItem(props){
 
     const [items,setitems] =useState([]);
-    const [i,seti]=useState('');
-    const[itid,setitid] =useState('');
-
-    const getdata= async () => { axios.get('http://localhost:8080/items3').then((dataa) =>  { const r=dataa.data;
-    //this.setState({persons:JSON.stringify(r)});
-    setitems({ items:r}); }); }
+   const [i,seti]=useState('');
+const [a,setprod]=useState('');
+const [b,setpurchdate]=useState('');
+const [c,setexdate]=useState('');
+const [d,setquant]=useState('');
+const [e,setprice]=useState('');
+const  [f,setid]=useState('');
+const [effvar,seteffvar]=useState('');
+const [effvar3,seteffvar3]=useState('');
+const [effvar2,seteffvar2]=useState('');
+const [effvarb,seteffvarb]=useState('');
+const [effvarc,seteffvarc]=useState('');
+const [effvarn,seteffvarn]=useState('');
+const[itid,setitid] =useState(''); const[divval,setdivval]=useState('');
     
-    let f='';
-    items.forEach(item => console.log(f=f+item.id+' '+item.product+' '+new Date(item.purchasedate).toLocaleDateString()+' '+new Date(item.expdate).toLocaleDateString()+' '+item.quantity+' '+item.price+'<br/>'))//this.setState({i:movie.id}), this.setState({f:this.state.f+this.state.i+<br/>}) ); //f+i+'<br/>'
+
+
+useEffect(()=>{
+     axios.get('http://localhost:8080/items3').then((dataa) =>  { //const r=dataa.data;
+       setitems({ items:dataa.data}); 
+      
+     
+      });          
+      
+      },[]);
+    
+
+   // let f='';
+   // items.forEach(item => console.log(f=f+item.id+' '+item.product+' '+new Date(item.purchasedate).toLocaleDateString()+' '+new Date(item.expdate).toLocaleDateString()+' '+item.quantity+' '+item.price+'<br/>'))//this.setState({i:movie.id}), this.setState({f:this.state.f+this.state.i+<br/>}) ); //f+i+'<br/>'
     //this.setState({i:f}); 
-    seti( f); 
+  //  seti( f); 
+ 
+/*load all items to view
+text box to select iten- textboxes with data of selection to update- innerhtml
+button to update
+*/
+ useEffect(()=>{
+
+  let e=[];let a=[];let value=[];let f='';
+       for ( value of Object.entries(items))//{    if(usern===value.username && passw===value.password){  console.log("True");   navigate("./Welcome");;   }else{const mes='Un/password not found'; props.message=mes;} console.log('Hello '+value.lname);}
+       {
+         for ( e of value)
+         {
+           //console.log('Log  '+ value[e]);
+           for(a of e){
+           
+            if (isNaN(a.id))
+            {}
+            else{
+             console.log(a.id+a.product);
+               f=f+a.id+' '+a.product+' '+new Date(a.purchasedate).toLocaleDateString()+' '+new Date(a.expdate).toLocaleDateString()+' '+a.price+' '+a.quantity+'<br/>';
+             
+            }
+            }
+         }};seti(f);
+ });
+
+
+
 
   const  handleItemName = event => {
-        this.setState({ delitem:event.target.value});
-       console.log("Item "+this.state.delitem);
+       // this.setState({ itid:event.target.value});
+setitid(event.target.value);
+      // console.log("Item "+itid);
       }; 
+
+      const  handleItemName1 = event => {
+        // this.setState({ itid:event.target.value});
+ seteffvar(event.target.value);
+       // console.log("Item "+itid);
+       }; 
+       const  handleItemName2 = event => {
+        // this.setState({ itid:event.target.value});
+ seteffvarc(event.target.value);
+       // console.log("Item "+itid);
+       }; 
+       const  handleItemName3 = event => {
+        // this.setState({ itid:event.target.value});
+ seteffvarn(event.target.value);
+       // console.log("Item "+itid);
+       }; 
+
+let cup=''; let road=''; let highway=''; let mall=''; let office='';
+
+      const  handleClick1 = () => {
+        const article = { };
+        
+        
+        cup=effvar;
+        road=effvar2;
+        highway=effvarb;
+        mall=effvarc;
+        office=effvarn;
+        console.log(' A cup '+ cup);
+
+        setprod(effvar);
+        setpurchdate(effvar2);
+        setexdate(effvarb);
+        setquant(effvarc);
+        setprice(effvarn);
+
+      
+      
+      axios.put(`http://localhost:8080/itemsa/${itid}`, {"product":cup,"purchasedate":road,"expdate":highway,"price":mall,"quantity":office}).then((response) => {
+        console.log(response);
+
     
 
-    const  handleClick = (event) => {
-        console.log('Click happened');
-        console.log("Item in handle "+this.state.itemn);console.log("purchdate "+this.state.purchdate);console.log("exdate "+this.state.exdate);console.log("itmprice "+this.state.itmprice);
-        console.log("Item "+this.state.itmquant);
+      }, (error) => {
+        console.log(error);})
+      }
+                
+      
 
-          this.setState({delitem:event.target.value});
-        axios.delete(`http://localhost:8080/deltitem/+${this.state.delitem}`)  
+
+
+
+
+
+
+
+    const  handleClick = () => {
+        console.log('Click happened');
+        console.log("Item "+itid);
+        axios.get(`http://localhost:8080/items2/+${itid}`)  
+        .then((response) => {
+          console.log(response);
+        /*  setprod({a:effvar});  
+          setid({f:effvar3});
+          setpurchdate({b:effvar2});
+          setexdate({c,effvarb});
+          setquant({d,effvarc});
+          setprice({e,effvarn})*/ let account = response.data;
+        //  seteffvar({effvar:account.product});
+         /* seteffvar3({effvar3:account.id});
+          seteffvar2({effvar:account.purchasedate});
+          seteffvarb({effvarb:account.expdate});
+          seteffvarc({effvarc:account.price});*/
+            let tempvar1=''; 
+          for (const key in account)
+          {
+            console.log(`Effvar :${account[key]}`);
+            
+            seteffvar(`${account["product"]}`);
+            console.log(`Effvar prod :${account["product"]}`);
+            tempvar1=account["product"];
+            seteffvar3(account["id"]);
+            console.log('Effvar +'+account[key]);
+            seteffvar2(account["purchasedate"]);
+            seteffvarb(account["expdate"]);
+            seteffvarc(account["quantity"]);
+            seteffvarn(account["price"]);
+            console.log("Var account "+ tempvar1);
+          }
+  
+  
+
+        }, (error) => {
+          console.log(error);})
+//proc resp
+       
+
+
+
+     //   let j=''; let effvar='as';  let effvar3='';  let effvar2='';  let effvarb='';  let effvarc=''; let effvarn='';
+     //   j= '<input type="text" value="'+effvar3+'" />'+' '+'<input type="text" value="'+effvar+'" />'+' '+'<input type="text" value="'+effvar2+'" />'+' '+'<input type="text" value="'+effvarb+'" />'+' '+'<input type="text"  value="'+effvarc+'"  />'+' '+'<input type="text" value="'+effvarn+'"  />'+' '+'<input type="button"  onClick={' +handleClick1+'} value="submit" />';
+    //   setdivval(j);
+//from effvar
+
+
+
+        /*  this.setState({delitem:event.target.value});
+        axios.delete(`http://localhost:8080/deltitem/+${this.state.itid}`)  
         .then((response) => {
           console.log(response);
         }, (error) => {
-          console.log(error);})
+          console.log(error);})*/
 
+          //console.log(items)
+     
+        
       };
 
 
@@ -47,11 +198,16 @@ function UpdateItem(props){
         <div className="pagsstyle1">
        <h1>Update Items</h1>
         <div>
-       <label for="iid">Enter the item name: </label>
-       <input type="text" name="iid" id="iid"  onChange={handleItemName} value={itid} ></input><br/>
-       
+        <div dangerouslySetInnerHTML={{__html: i}} />
+       <label htmlFor="iid">Enter the item id: </label>
+       <input type="text" name="iid" id="iid" value={itid}
+        onChange={handleItemName}  /><br/>
+       <div dangerouslySetInnerHTML={{__html:divval}}/>
        <input type="button" onClick={handleClick} value="Submit"/>
     </div>
+    <div className="divw" ><p className="p11">Id</p><p className="p11">Product</p><p className="p11">Date</p><p className="p11">Date</p>Price<p className="p11">Quantity</p></div>
+    <input type="text" value={effvar3} /><input type="text" value={effvar}  onChange={handleItemName1} /><input type="text" value={effvar2} /><input type="text" value={effvarb} /><input type="text"  value={effvarc} onChange={handleItemName2} /><input type="text" value={effvarn} onChange={handleItemName3} /><input type="button"  onClick={handleClick1} value="submit" />
+
        </div> 
       
         </>

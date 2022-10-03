@@ -37,11 +37,11 @@ class AddItem extends Component {
         console.log("Item in handle "+this.state.itemn);console.log("purchdate "+this.state.purchdate);console.log("exdate "+this.state.exdate);console.log("itmprice "+this.state.itmprice);
         console.log("Item "+this.state.itmquant);
         axios.post('http://localhost:8080/items1', {
-          itemname: this.state.itemn,
+          product: this.state.itemn,
           purchasedate: this.state.purchdate,
           expdate:this.state.exdate,
           price:this.state.itmprice,
-          itemquantity:this.state.itmquant
+          quantity:this.state.itmquant
         })
         .then((response) => {
           const mes1='Item Added';
