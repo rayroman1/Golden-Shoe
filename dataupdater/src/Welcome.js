@@ -1,8 +1,12 @@
 import React from 'react';
 import "./styling/pagStyling.css";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 function ViewAll() {
+
+
+    const navigate = useNavigate();
+
     return (
 
         <div className="pagstyling"> 
@@ -18,6 +22,9 @@ function ViewAll() {
             <tr><Link to="/upemp">Update Employee</Link></tr>
 
         </table>
+        <p>
+        <button onClick={() => navigate("/")}>Go to Main</button>
+      </p>
         </div>
     );
 }

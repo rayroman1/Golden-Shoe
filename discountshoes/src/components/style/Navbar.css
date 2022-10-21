@@ -1,0 +1,11 @@
+.navbar1{
+
+    
+   bottom:50%;
+    height:50px;
+    width: 100%;
+    
+    background: blue;
+      
+    list-style-type: none;
+}

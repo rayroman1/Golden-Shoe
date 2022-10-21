@@ -2,37 +2,41 @@ import { isDisabled } from '@testing-library/user-event/dist/utils';
 import React, { Component } from 'react';
 import "./styling/pagStyling.css";
 import axios from 'axios';
+import withNavigateHook from './withNavigateHook';
 
 class AddItem extends Component {
 
     constructor(props) {
         super(props);
         this.state ={ itemn:"",purchdate:'',exdate:'',itmprice:'',itmquant:'',
-        mes:''
+        mes:'',
           // itemn:React.createRef(),
           // handleItemName : this.handleItemName.bind(this),
-           
+        // let navigate:''
         } //{ itemn: '' }';
+        this.handleToContact = this.handleToContact.bind(this);
       }
-   
+    //  navigate = useNavigate();
     handleItemName = event => {
         this.setState({ itemn:event.target.value});
-       
-       
-       
-       
-
         console.log("Item "+this.state.itemn);
       }; 
-      handleItemName2 = event => { this.setState({ purchdate:event.target.value});console.log("purchdate "+this.state.purchdate);}
-
-
+    handleItemName2 = event => { this.setState({ purchdate:event.target.value});console.log("purchdate "+this.state.purchdate);}
   handleItemName3 = event => { this.setState({ exdate:event.target.value});console.log("exdate "+this.state.exdate);}
+  handleItemName4 = event => { this.setState({ itmprice:event.target.value});console.log("itmprice "+this.state.itmprice);}
+  handleItemName5 = event => {   this.setState({ itmquant:event.target.value}); console.log("Item "+this.state.itmquant);}
 
- handleItemName4 = event => { this.setState({ itmprice:event.target.value});console.log("itmprice "+this.state.itmprice);}
- handleItemName5 = event => {   this.setState({ itmquant:event.target.value}); console.log("Item "+this.state.itmquant);}
+  handleToProduct = () => {
+    console.log("To product");
+    this.props.navigation('/viewall');
+}
 
-      handleClick = () => {
+handleToContact() {
+    console.log("To contact");
+    this.props.navigation('/');
+}
+
+    handleClick = () => {
         console.log('Click happened');
         console.log("Item in handle "+this.state.itemn);console.log("purchdate "+this.state.purchdate);console.log("exdate "+this.state.exdate);console.log("itmprice "+this.state.itmprice);
         console.log("Item "+this.state.itmquant);
@@ -52,12 +56,13 @@ class AddItem extends Component {
           const mes1='Error item not added';
           console.log(error);
           this.setState({ mes:mes1})
-        });
+        });      
       };
-
+      
     render() {
     return (
         <>
+
         <div className="pagsstyle1">
         <h1>Add Items</h1>
         <div>
@@ -73,7 +78,14 @@ class AddItem extends Component {
        <input type="text" name="itemquant" id="itemquant" required onChange={this.handleItemName5} value={this.state.itmquant}  ></input><br/>
        <input type="button" onClick={this.handleClick} value="Submit"/>
        </div>
+       <div>
+                <button onClick={this.handleToProduct}>To Menu</button>
+                <button onClick={this.handleToContact}>To Main</button>
+            </div>
        <h1>{this.state.mes}  </h1>
+       <p>
+     
+      </p>
        </div> 
       
         </>
@@ -81,4 +93,4 @@ class AddItem extends Component {
     }
 }
 
-export default AddItem;
+export default withNavigateHook(AddItem);

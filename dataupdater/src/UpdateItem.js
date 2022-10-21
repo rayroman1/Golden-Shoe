@@ -2,6 +2,9 @@ import React from 'react';
 import "./styling/pagStyling.css";
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+
+
 
 function UpdateItem(props){
 
@@ -42,6 +45,7 @@ useEffect(()=>{
 text box to select iten- textboxes with data of selection to update- innerhtml
 button to update
 */
+const navigate = useNavigate();
  useEffect(()=>{
 
   let e=[];let a=[];let value=[];let f='';
@@ -133,17 +137,8 @@ let cup=''; let road=''; let highway=''; let mall=''; let office='';
         axios.get(`http://localhost:8080/items2/+${itid}`)  
         .then((response) => {
           console.log(response);
-        /*  setprod({a:effvar});  
-          setid({f:effvar3});
-          setpurchdate({b:effvar2});
-          setexdate({c,effvarb});
-          setquant({d,effvarc});
-          setprice({e,effvarn})*/ let account = response.data;
-        //  seteffvar({effvar:account.product});
-         /* seteffvar3({effvar3:account.id});
-          seteffvar2({effvar:account.purchasedate});
-          seteffvarb({effvarb:account.expdate});
-          seteffvarc({effvarc:account.price});*/
+   let account = response.data;
+      
             let tempvar1=''; 
           for (const key in account)
           {
@@ -170,21 +165,7 @@ let cup=''; let road=''; let highway=''; let mall=''; let office='';
 
 
 
-     //   let j=''; let effvar='as';  let effvar3='';  let effvar2='';  let effvarb='';  let effvarc=''; let effvarn='';
-     //   j= '<input type="text" value="'+effvar3+'" />'+' '+'<input type="text" value="'+effvar+'" />'+' '+'<input type="text" value="'+effvar2+'" />'+' '+'<input type="text" value="'+effvarb+'" />'+' '+'<input type="text"  value="'+effvarc+'"  />'+' '+'<input type="text" value="'+effvarn+'"  />'+' '+'<input type="button"  onClick={' +handleClick1+'} value="submit" />';
-    //   setdivval(j);
-//from effvar
-
-
-
-        /*  this.setState({delitem:event.target.value});
-        axios.delete(`http://localhost:8080/deltitem/+${this.state.itid}`)  
-        .then((response) => {
-          console.log(response);
-        }, (error) => {
-          console.log(error);})*/
-
-          //console.log(items)
+  
      
         
       };
@@ -207,7 +188,9 @@ let cup=''; let road=''; let highway=''; let mall=''; let office='';
     </div>
     <div className="divw" ><p className="p11">Id</p><p className="p11">Product</p><p className="p11">Date</p><p className="p11">Date</p>Price<p className="p11">Quantity</p></div>
     <input type="text" value={effvar3} /><input type="text" value={effvar}  onChange={handleItemName1} /><input type="text" value={effvar2} /><input type="text" value={effvarb} /><input type="text"  value={effvarc} onChange={handleItemName2} /><input type="text" value={effvarn} onChange={handleItemName3} /><input type="button"  onClick={handleClick1} value="submit" />
-
+    <p>
+        <button onClick={() => navigate("/")}>Go to Main</button>   <button onClick={() => navigate(-1)}>Go Back</button>
+      </p>
        </div> 
       
         </>

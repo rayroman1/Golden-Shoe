@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import "./styling/pagStyling.css";
-import axios from 'axios';
+import axios from 'axios';import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class DeleteItem extends Component {
 
@@ -63,6 +63,7 @@ class DeleteItem extends Component {
       
        <input type="button" onClick={this.handleClick} value="Submit"/>
        </div>
+       <Link to="/viewall" className="navStq">Go Back</Link> <Link to="/" className="navStq">Main</Link>
        </div> 
       
         </>

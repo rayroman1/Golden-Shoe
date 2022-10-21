@@ -17,7 +17,7 @@ function Signin(props) {
         const [emid,setemid]=useState('');
         const [text,settext]= useState({text:'iuy'});
        const [message1,setmessage]= useState(settext);
-     
+     let f='';
        const changeState = () => {  
         const mes ="Un/password not found";
       
@@ -128,6 +128,11 @@ this.state.persons=r;
        <input type="button" onClick={getUsers} value="Submit"/>
     {/* </form>*/}
      <h1>{message1}  </h1>
+
+     <p>
+        <button onClick={() => navigate("/")}>Go to Main</button>
+      </p>
+     
         </div>
         
         </>

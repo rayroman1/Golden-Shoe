@@ -1,6 +1,6 @@
 import React from 'react';
 import "./styling/pagStyling.css";
-import {useEffect, useState} from 'react';import axios from 'axios';
+import {useEffect, useState} from 'react';import axios from 'axios';import { BrowserRouter, Route, Link } from "react-router-dom";
 
 function ViewItems(){
 
@@ -52,6 +52,7 @@ function ViewItems(){
     
      {/*<input type="button" onClick={this.handleClick} value="Back"/>*/}
        </div>
+       <Link to="/viewall" className="navStq">Go Back</Link> <Link to="/" className="navStq">Main</Link>
        </div> 
       
         </>
